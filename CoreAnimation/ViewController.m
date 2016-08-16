@@ -29,7 +29,18 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
 
-    _dataArray = @[@"TransformViewController", @"CAShapeLayerViewController", @"CATextLayerViewController"];
+    _dataArray = @[
+                   @"TransformViewController",
+                   @"CAShapeLayerViewController",
+                   @"CATextLayerViewController",
+                   @"CATransformLayerViewController",
+                   @"CAGradientLayerViewController",
+                   @"CAReplicatorLayerViewController",
+                   @"CAScrollViewLayerViewController",
+                   @"CATiledLayerViewController",
+                   @"CAEmitterLayerViewController"
+                   ];
+
 }
 
 #pragma mark - Delegate

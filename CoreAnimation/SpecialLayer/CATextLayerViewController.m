@@ -8,7 +8,7 @@
 
 #import "CATextLayerViewController.h"
 #import <CoreText/CoreText.h>
-#import "CATextLayerLabel.h"
+#import "TextLayerLabel.h"
 
 @interface CATextLayerViewController ()
 
@@ -42,7 +42,7 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:title forState:UIControlStateNormal];
         button.frame = CGRectMake(20, self.layerY + self.layerHeight + 20 + (20 + 40) * i, self.layerWidth, 40);
-        button.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.2 + 0.2 * i alpha:1];
+        button.backgroundColor = [UIColor colorWithRed:0.5 green:0.2 blue:0.2 + 0.2 * i alpha:1];
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i;
         [self.view addSubview:button];
@@ -98,7 +98,7 @@
     self.textLayer.fontSize = font.pointSize;
     CGFontRelease(fontRef);
     
-    self.textLayer.backgroundColor = [UIColor lightGrayColor].CGColor;
+    self.textLayer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1].CGColor;
     self.textLayer.foregroundColor = [UIColor grayColor].CGColor;
     //    textLayer.truncationMode = kCATruncationStart;  //截取
     self.textLayer.alignmentMode = kCAAlignmentCenter;
@@ -115,6 +115,7 @@
     self.textLayer.frame = CGRectMake(self.layerX, self.layerY, self.layerWidth, self.layerHeight);
     [self.view.layer addSublayer:self.textLayer];
     
+    self.textLayer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1].CGColor;
     self.textLayer.wrapped = YES;
     self.textLayer.contentsScale = [UIScreen mainScreen].scale;
     self.textLayer.alignmentMode = kCAAlignmentRight;
@@ -153,10 +154,11 @@
 /*UILabel的替代品*/
 - (void)labelLayer
 {
-    CATextLayerLabel *label = [[CATextLayerLabel alloc] init];
+    TextLayerLabel *label = [[TextLayerLabel alloc] init];
     label.frame = CGRectMake(self.layerX, self.layerY, self.layerWidth, self.layerHeight);
     label.text = @"The text layer provides simple text layout and rendering of plain or attributed strings. The first line is aligned to the top of the layer.";
     label.font = [UIFont systemFontOfSize:20 weight:0.5];
+    label.layer.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1].CGColor;
     label.textColor = [UIColor brownColor];
     self.textLayer = (CATextLayer *)label.layer;
     [self.view.layer addSublayer:self.textLayer];
